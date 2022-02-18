@@ -1,0 +1,52 @@
+{
+	"bsonType": "object",
+	"required": [
+		"user_id",
+		"order_classroom_id",
+		"classroom_id",
+		"seat",
+		"is_delete",
+		"create_time"
+	],
+	"permission": {
+		"read": false, // 前端非admin的读取记录权限控制。默认值是false，即可以不写。可以简单的true/false，也可以写表达式
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": { // 表的字段清单
+		"_id": { // 字段名称，每个表都会带有_id字段
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户id",
+			"foreignKey": "user_info._id" // 使用foreignKey表示，此字段关联user_info表的_id。
+		},
+		"order_classroom_id": {
+			"bsonType": "string",
+			"title": "预定教室记录id",
+			"foreignKey": "order_classroom_info._id" // 使用foreignKey表示，此字段关联order_classroom_info表的_id。
+		},
+		"classroom_id": {
+			"bsonType": "string",
+			"title": "教室id",
+			"foreignKey": "classroom._id" // 使用foreignKey表示，此字段关联classroom表的_id。
+		},
+		"seat": {
+			"bsonType": "string",
+			"title": "座位"
+		},
+		"is_delete": {
+			"bsonType": "bool",
+			"title": "是否删除"
+		},
+		"create_time": {
+			"bsonType": "timestamp",
+			"title": "创建时间"
+		}
+	},
+	"fieldRules": [
+		// 字段之间的约束关系。比如字段开始时间小于字段结束时间。也可以只校验一个字段。支持表达式
+	]
+}

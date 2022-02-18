@@ -1,0 +1,34 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false, // 前端非admin的读取记录权限控制。默认值是false，即可以不写。可以简单的true/false，也可以写表达式
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": { // 表的字段清单
+		"_id": { // 字段名称，每个表都会带有_id字段
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "教室名称"
+		},
+		"size": {
+			"bsonType": "int",
+			"title": "教室大小"
+		},
+		"row": {
+			"bsonType": "int",
+			"title": "教室有多少排座位"
+		},
+		"col": {
+			"bsonType": "int",
+			"title": "教室有多少列座位"
+		}
+	},
+	"fieldRules": [
+		// 字段之间的约束关系。比如字段开始时间小于字段结束时间。也可以只校验一个字段。支持表达式
+	]
+}

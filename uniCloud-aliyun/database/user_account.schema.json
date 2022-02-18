@@ -1,0 +1,34 @@
+{
+	"bsonType": "object",
+	"required": [
+		"username",
+		"password"
+	],
+	"permission": {
+		"read": false, // 前端非admin的读取记录权限控制。默认值是false，即可以不写。可以简单的true/false，也可以写表达式
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": { // 表的字段清单
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户信息id",
+			"foreignKey": "user_info._id" // 使用foreignKey表示，此字段关联user_info表的_id。
+		},
+		"username": {
+			"bsonType": "string",
+			"title": "用户名"
+			// "description":"限制只能输入中文",
+			// "pattern":"^[\\u4e00-\\u9fa5]+$",
+			// "errorMessage":"只能输入中文"
+		},
+		"password": {
+			"bsonType": "string",
+			"title": "密码"
+		}
+	},
+	"fieldRules": [
+		// 字段之间的约束关系。比如字段开始时间小于字段结束时间。也可以只校验一个字段。支持表达式
+	]
+}
